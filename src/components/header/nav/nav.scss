@@ -15,9 +15,21 @@ $burger-appears: 1000px;
             order: 1;
         }
     }
-    &_cart {
+    &_profile {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        & > * {
+            padding: 2rem;
+        }
         @media screen and (min-width: $small-dev-width) {
             order: 3;
+        }
+
+        &_cart {
+        }
+        &_loggin-in {
         }
     }
 
@@ -31,7 +43,7 @@ $burger-appears: 1000px;
         justify-content: space-around;
         width: 100%;
         list-style: none;
-        border-top: 2px solid var(--color-grey--light);
+        border: 2px solid var(--color-grey--light);
         &_link {
             padding: 1rem;
             font-size: var(--base-font-size);
