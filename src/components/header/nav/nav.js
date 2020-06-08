@@ -10,7 +10,9 @@ function Nav() {
             <div className='navbar'>
                 <MdDehaze className='navbar_burger' />
                 <h1 className='navbar_title'>The Clothing Store</h1>
-                <SearchField />
+                <div className='navbar_searchfield'>
+                    <SearchField />
+                </div>
                 <div className='navbar_profile'>
                     <div className='navbar_profile_logged-in'>
                         Welcome, Sign In

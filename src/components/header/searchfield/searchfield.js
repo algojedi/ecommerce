@@ -10,7 +10,11 @@ function SearchField() {
         >
             <div className='search-field'>
                 <FaSearch className='search-field_icon' size='14px' />
-                <input type='text' className='search-field_text-field' />
+                <input
+                    type='text'
+                    placeholder='Search'
+                    className='search-field_text-field'
+                />
             </div>
         </IconContext.Provider>
     )

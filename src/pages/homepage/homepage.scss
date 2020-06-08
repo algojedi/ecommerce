@@ -3,6 +3,9 @@ $grid-2-1-bp: 770px;
 .homepage {
     padding: 0 var(--page-x-padding);
     outline: 1px dashed red;
+    & > section {
+        margin: var(--section-y-margin) 0;
+    }
     & > * {
         outline: 2px solid blue;
     }

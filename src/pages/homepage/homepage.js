@@ -1,6 +1,7 @@
 import React from 'react'
 import './homepage.scss'
 import bannerPic from '../../assets/banner-photo-lg.jpg'
+import Directory from '../../components/directory/directory'
 
 function HomePage() {
     return (
@@ -21,6 +22,7 @@ function HomePage() {
                     <button className='homepage_banner_msg_btn'>DETAILS</button>
                 </div>
             </section>
+            <Directory />
         </main>
     )
 }

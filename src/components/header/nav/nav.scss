@@ -19,6 +19,8 @@ $burger-appears: 1000px;
         display: flex;
         justify-content: space-around;
         align-items: center;
+        font-size: var(--base-font-size);
+        color: var(--color-text-onwhite);
 
         & > * {
             padding: 2rem;
@@ -32,10 +34,15 @@ $burger-appears: 1000px;
         &_loggin-in {
         }
     }
-
+    &_searchfield {
+        order: 2;
+        @media screen and (max-width: $burger-appears) {
+            display: none;
+        }
+    }
     &_burger {
         @media screen and (min-width: $small-dev-width) {
-            order: 2;
+            order: 1;
         }
     }
     &_links {
@@ -47,6 +54,10 @@ $burger-appears: 1000px;
         &_link {
             padding: 1rem;
             font-size: var(--base-font-size);
+        }
+
+        @media screen and (max-width: $burger-appears) {
+            display: none;
         }
     }
     @media screen and (max-width: $small-dev-width) {
@@ -60,5 +71,9 @@ $burger-appears: 1000px;
     @media screen and (max-width: $small-dev-width) {
         // @media screen and (max-width: 500px) {
         font-size: 2rem;
+    }
+
+    @media screen and (min-width: $burger-appears) {
+        display: none;
     }
 }

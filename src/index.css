@@ -16,6 +16,8 @@
 
     --color-green: rgb(0, 112, 74);
     --color-black: black;
+
+    --color-grey: rgb(221, 221, 221);
     --color-grey--light: rgb(243, 243, 243);
 
     --color-text-onblack: whitesmoke;
@@ -27,6 +29,9 @@
     --h3-font-size: 2.5rem;
 
     --page-x-padding: 3rem;
+    --section-y-margin: 3rem;
+
+    --burger-appears: 1000px;
 }
 
 /* --------- breakpoints ----------------- */
