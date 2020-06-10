@@ -7,7 +7,7 @@
     font-size: 62.5%;
 
     /* navy */
-    --color-primary: rgb(0, 39, 76);
+    --color-primary: rgb(0, 39, 76); 
     --color-primary--light: rgb(3, 89, 170);
     /* red */
     --color-secondary: rgb(179, 8, 56);
