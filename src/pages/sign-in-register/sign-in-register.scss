@@ -3,7 +3,9 @@
     justify-content: center;
     width: 100%;
     flex-wrap: wrap;
-
+    & > * {
+        padding: 2rem;
+    }
     &_sign-in {
 
     }

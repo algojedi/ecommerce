@@ -18,14 +18,12 @@ const Register = () => {
 
         return (
             <div className='sign-in'>
-                <h1>Sign In</h1>
+                <h1>Create New Account</h1>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <FormInput reference={register}
                         name='email'
                         type='email'
-                        // handleChange={e => setEmail(e.target.value)}
-                        // value={email}
                         label='email'
                         required
                     />
@@ -33,13 +31,11 @@ const Register = () => {
                     reference={register({ required: "Password must be at least 8 characters", minLength: 8 })}
                         name='password'
                         type='password'
-                        // value={password}
-                        // handleChange={e => setPassword(e.target.value)}
                         label='password'
                         required
                     />
                     {errors.password && errors.password.type === 'minLength' && <p>this is req'd</p>}
-                    <CustomButton type='submit'> Sign in </CustomButton>
+                    <CustomButton type='submit' variation='inverse'>Register</CustomButton>
                 </form>
             </div>
         )
