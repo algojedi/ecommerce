@@ -1,60 +1,53 @@
-import React from 'react'
+import React, { useState} from 'react'
 
-import FormInput from '../form-input/form-input.component'
-import CustomButton from '../custom-button/custom-button.component'
+import FormInput from '../form-input/form-input'
+import CustomButton from '../custom-btn/custom-btn'
+import { useForm } from 'react-hook-form'
+import './sign-in.scss'
 
-import './sign-in.styles.scss'
+const SignIn = () => {
+    const {register, handleSubmit, errors} = useForm();
+    const [ email, setEmail ] = useState('')
+    const [ password, setPassword ] = useState('')
+        
+    
 
-class SignIn extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            email: '',
-            password: '',
-        }
+    const onSubmit = data => {
+        //preventDefault()
+        console.log('the data is', data)
+        setEmail('')
+        setPassword('')
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault()
+  
 
-        this.setState({ email: '', password: '' })
-    }
-
-    handleChange = (event) => {
-        const { value, name } = event.target
-
-        this.setState({ [name]: value })
-    }
-
-    render() {
         return (
             <div className='sign-in'>
-                <h2>I already have an account</h2>
-                <span>Sign in with your email and password</span>
+                <h1>Sign In</h1>
 
-                <form onSubmit={this.handleSubmit}>
-                    <FormInput
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <FormInput reference={register}
                         name='email'
                         type='email'
-                        handleChange={this.handleChange}
-                        value={this.state.email}
+                        // handleChange={e => setEmail(e.target.value)}
+                        // value={email}
                         label='email'
                         required
                     />
                     <FormInput
+                    reference={register({ required: "Password must be at least 8 characters", minLength: 8 })}
                         name='password'
                         type='password'
-                        value={this.state.password}
-                        handleChange={this.handleChange}
+                        // value={password}
+                        // handleChange={e => setPassword(e.target.value)}
                         label='password'
                         required
                     />
+                    {errors.password && errors.password.type === 'minLength' && <p>this is req'd</p>}
                     <CustomButton type='submit'> Sign in </CustomButton>
                 </form>
             </div>
         )
-    }
 }
 
 export default SignIn

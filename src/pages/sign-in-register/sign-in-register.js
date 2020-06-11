@@ -7,8 +7,8 @@ import './sign-in-register.scss'
 
 const SignInRegisterPage = () => (
     <div className='sign-in-register'>
-        <SignIn />
-        <Register />
+        <SignIn className='sign-in-register_sigin-in' />
+        <Register className='sign-in-register_register' />
 
     </div>
 )

@@ -33,25 +33,25 @@ function Ticker() {
                 break
         }
     }
-    useEffect(() => {
-        console.log('use effect running with index', tickerIndex)
-        if (arrowClicked) {
-            setTickerDisplay(notices[tickerIndex])
-            setTickerIndex(
-                tickerIndex === notices.length - 1 ? 0 : tickerIndex + 1
-            )
-            setArrowClicked(false)
-            return
-        }
-        setTimeout(() => {
-            setTickerDisplay(notices[tickerIndex])
-            setTickerIndex(
-                tickerIndex === notices.length - 1 ? 0 : tickerIndex + 1
-            )
-            console.log('This will run every second!')
-            console.log(tickerDisplay)
-        }, 6000)
-    }, [tickerIndex, notices, tickerDisplay, arrowClicked])
+    // useEffect(() => {
+    //     console.log('use effect running with index', tickerIndex)
+    //     if (arrowClicked) {
+    //         setTickerDisplay(notices[tickerIndex])
+    //         setTickerIndex(
+    //             tickerIndex === notices.length - 1 ? 0 : tickerIndex + 1
+    //         )
+    //         setArrowClicked(false)
+    //         return
+    //     }
+    //     setTimeout(() => {
+    //         setTickerDisplay(notices[tickerIndex])
+    //         setTickerIndex(
+    //             tickerIndex === notices.length - 1 ? 0 : tickerIndex + 1
+    //         )
+    //         console.log('This will run every second!')
+    //         console.log(tickerDisplay)
+    //     }, 6000)
+    // }, [tickerIndex, notices, tickerDisplay, arrowClicked])
 
     return (
         <IconContext.Provider value={{ className: 'ticker-icons-provider' }}>

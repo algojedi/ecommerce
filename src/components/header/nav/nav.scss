@@ -6,13 +6,15 @@ $burger-appears: 1000px;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     flex-direction: row;
     &_title {
         margin: 0;
         padding: 0;
+        font-size: 1.25rem;
         @media screen and (min-width: $small-dev-width) {
             order: 1;
+            font-size: 2rem;
         }
     }
     &_profile {
@@ -23,7 +25,11 @@ $burger-appears: 1000px;
         color: var(--color-text-onwhite);
 
         & > * {
+
             padding: 2rem;
+            @media screen and (max-width: $small-dev-width) {
+                padding: 1rem;
+            }
         }
         @media screen and (min-width: $small-dev-width) {
             order: 3;
