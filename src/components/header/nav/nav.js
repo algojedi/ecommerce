@@ -3,8 +3,19 @@ import './nav.scss'
 import { MdDehaze } from 'react-icons/md'
 import { IconContext } from 'react-icons'
 import SearchField from '../searchfield/searchfield'
+import { Link, useHistory } from 'react-router-dom'
+import { connect, useDispatch } from 'react-redux'
+import { setUser } from '../../../redux/actions/actions'
 
-function Nav() {
+
+const Nav = ({ currentUser }) => {
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const handleSignOut = () => {
+        dispatch(setUser(null))
+        history.push('/') 
+
+    }
     return (
         <IconContext.Provider value={{ className: 'nav-icons-provider' }}>
             <div className='navbar'>
@@ -14,9 +25,18 @@ function Nav() {
                     <SearchField />
                 </div>
                 <div className='navbar_profile'>
-                    <div className='navbar_profile_logged-in'>
-                        Welcome, Sign In
-                    </div>
+                {
+ currentUser ?
+
+                    <div onClick={handleSignOut} className='navbar_profile_signin-link'>
+                            Sign Out
+                        </div>
+:
+
+                    <Link to='/signin' className='navbar_profile_signin-link'>
+                            Sign In
+                        </Link>
+                }     
                     <div className='navbar_profile_cart'>Cart</div>
                 </div>
             </div>
@@ -30,4 +50,8 @@ function Nav() {
     )
 }
 
-export default Nav
+const mapStateToProps = state => ({ 
+    currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(Nav)

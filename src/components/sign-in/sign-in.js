@@ -4,22 +4,35 @@ import FormInput from '../form-input/form-input'
 import CustomButton from '../custom-btn/custom-btn'
 import { useForm } from 'react-hook-form'
 import './sign-in.scss'
+import useAsync from '../../hooks/use-async';
 
 const SignIn = () => {
+    
+// An async function for testing our hook.
+// Will be successful 50% of the time.
+const myFunction = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const rnd = Math.random() * 10;
+      rnd <= 5
+        ? resolve('12345') // user id 
+        : reject('Oh no there was an error');
+    }, 2000);
+  });
+};
+
     const {register, handleSubmit, errors} = useForm();
-    const [ email, setEmail ] = useState('')
-    const [ password, setPassword ] = useState('')
-        
+    // const [ email, setEmail ] = useState('')
+    // const [ password, setPassword ] = useState('')
+        const { execute, pending, value, error } = useAsync(myFunction, false)
     
 
     const onSubmit = data => {
         //preventDefault()
-        console.log('the data is', data)
-        setEmail('')
-        setPassword('')
+        console.log('the data is', data) // data.email and data.password
+        // setEmail('')
+        // setPassword('')
     }
-
-  
 
         return (
             <div className='sign-in'>

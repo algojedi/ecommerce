@@ -37,7 +37,9 @@ $burger-appears: 1000px;
 
         &_cart {
         }
-        &_loggin-in {
+        &_signin-link {
+            text-decoration: none;
+            cursor: pointer;
         }
     }
     &_searchfield {

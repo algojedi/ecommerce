@@ -22,6 +22,18 @@ const Register = () => {
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <FormInput reference={register}
+                        name='fname'
+                        type='text'
+                        label='first name'
+                        required
+                    />
+                    <FormInput reference={register}
+                        name='lname'
+                        type='text'
+                        label='last name'
+                        required
+                    />
+                    <FormInput reference={register}
                         name='email'
                         type='email'
                         label='email'
