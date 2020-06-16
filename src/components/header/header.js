@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import Ticker from './ticker/ticker'
 import Nav from './nav/nav'
 
