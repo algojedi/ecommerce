@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReactComponent as ShoppingCart } from '../../assets/cart.svg'
+// import { ReactComponent as ShoppingCart } from '../../assets/cart.svg'
 import './cart-icon.scss'
 
 // <ShoppingCart className="cart-icon_cart" />
@@ -7,15 +7,16 @@ import './cart-icon.scss'
 import {BsBag } from 'react-icons/bs'
 import { IconContext } from 'react-icons/lib'
 import { toggleCart } from '../../redux/actions/actions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, connect } from 'react-redux'
+import { selectCartItemsCount } from '../../redux/selectors/cart.selectors'
 
-function CartIcon() {
+function CartIcon( { itemCount }) {
     const dispatch = useDispatch()
     return (
         <IconContext.Provider value={{ className: 'nav-icons_provider' }}>
         <div className="cart-icon" onClick = { () => dispatch(toggleCart()) }>
         <BsBag className="cart-icon_cart" size="26px"/>
-        <span className="cart-icon_count">0</span>
+        <span className="cart-icon_count">{itemCount}</span>
             
         </div>
         
@@ -23,4 +24,8 @@ function CartIcon() {
     )
 }
 
-export default CartIcon
+const mapStateToProps = (state) => ({
+    itemCount: selectCartItemsCount(state),
+})
+
+export default connect(mapStateToProps)(CartIcon)

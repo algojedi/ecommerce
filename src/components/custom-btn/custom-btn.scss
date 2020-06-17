@@ -22,6 +22,9 @@
     background-color: white;
     color: black;
   }
+  &.opaque {
+    background: rgba($color: #000000, $alpha: .6)
+  }
   &:hover {
     // background-color: white;
     background-color: var(--color-primary--light);

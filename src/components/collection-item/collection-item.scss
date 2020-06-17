@@ -4,6 +4,7 @@
   flex-direction: column;
   height: 350px;
   align-items: center;
+  position: relative;
 
   &_image {
     width: 100%;
@@ -28,5 +29,9 @@
     &_price {
       width: 10%;
     }
+  }
+  &_btn {
+    position: absolute;
+    top: 230px;
   }
 }
