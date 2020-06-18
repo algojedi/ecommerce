@@ -47,7 +47,7 @@ const Register = () => {
                         required
                     />
                     {errors.password && errors.password.type === 'minLength' && <p>this is req'd</p>}
-                    <CustomButton type='submit' inverse >Register</CustomButton>
+                    <CustomButton type='submit' inverse="true" >Register</CustomButton>
                 </form>
             </div>
         )
