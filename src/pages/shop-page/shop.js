@@ -2,20 +2,11 @@ import './shop.scss'
 
 import React from 'react'
 import CollectionPreview from '../../components/collection-preview/collection-preview'
+import { useSelector } from 'react-redux';
 
-import SHOP_DATA from './shop-data';
 
-class ShopPage extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            collections: SHOP_DATA,
-        }
-    }
-
-    render() {
-        const { collections } = this.state
+const ShopPage = () => {
+    const { collections } = useSelector(state => state.shop)
         return (
             <div className='shop-page'>
                 {collections.map(({ id, ...otherCollectionProps }) => (
@@ -23,7 +14,6 @@ class ShopPage extends React.Component {
                 ))}
             </div>
         )
-    }
 }
 
 export default ShopPage
