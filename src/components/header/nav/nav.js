@@ -4,13 +4,12 @@ import { MdDehaze } from 'react-icons/md'
 import { IconContext } from 'react-icons'
 import SearchField from '../searchfield/searchfield'
 import { Link, useHistory } from 'react-router-dom'
-import { connect, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import { setUser } from '../../../redux/actions/actions'
 import CartIcon from '../../cart-icon/cart-icon'
 import CartDropdown from '../../cart-dropdown/cart-dropdown'
 
-const Nav = ({ currentUser, hidden }) => {
-    const dispatch = useDispatch()
+const Nav = ({ dispatch, currentUser, hidden }) => {
     const history = useHistory()
     const handleSignOut = () => {
         dispatch(setUser(null))
@@ -46,13 +45,12 @@ const Nav = ({ currentUser, hidden }) => {
                 </div>
             </div>
             {
-hidden ? <CartDropdown /> : null
+hidden ? null : <CartDropdown />
             }
             <ul className='navbar_links'>
-                <li className='navbar_links_link'>MEN</li>
-                <li className='navbar_links_link'>WOMEN</li>
-                <li className='navbar_links_link'>HATS</li>
-                <li className='navbar_links_link'>SALE</li>
+                <Link to='/mens' className='navbar_links_link'>MEN</Link>
+                <Link to='/women' className='navbar_links_link'>WOMEN</Link>
+                <Link to='/shop' className='navbar_links_link'>SHOP</Link>
             </ul>
         </IconContext.Provider>
     )

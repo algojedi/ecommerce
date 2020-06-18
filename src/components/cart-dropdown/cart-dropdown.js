@@ -1,28 +1,42 @@
 import React from 'react'
-import CustomButton from '../custom-btn/custom-btn';
-import "./cart-dropdown.scss"
-import { connect } from 'react-redux';
-import CartItem from '../cart-item/cart-item';
-import { selectCartItems } from '../../redux/selectors/cart.selectors';
+import CustomButton from '../custom-btn/custom-btn'
+import './cart-dropdown.scss'
+import { connect } from 'react-redux'
+import CartItem from '../cart-item/cart-item'
+import { selectCartItems } from '../../redux/selectors/cart.selectors'
+import { useHistory } from 'react-router-dom';
+import { toggleCart } from '../../redux/actions/actions'
 
-function CartDropdown({ cartItems }) {
+function CartDropdown({ dispatch, cartItems }) {
+    const history = useHistory()
     return (
-        <div className="cart-dropdown">
-        <div className="cart-dropdown_items">
-         {cartItems.map(cartItem => (
-        <CartItem key={cartItem.id} item={cartItem} />
-      ))}
-        </div>
-        <div className='cart-dropdown_btn'>
-        <CustomButton>Checkout</CustomButton>
-        </div>
-            
+        <div className='cart-dropdown'>
+            <div className='cart-dropdown_items'>
+                {cartItems.length ? (
+                    <div>
+                        {cartItems.map((cartItem) => (
+                            <CartItem key={cartItem.id} item={cartItem} />
+                        ))}
+                        <div className='cart-dropdown_btn' onClick={() => {
+                            dispatch(toggleCart())
+                            history.push('/checkout')
+                         }
+                        } >
+                            <CustomButton>Checkout</CustomButton>
+                        </div>
+                    </div>
+                ) : (
+                    <div className='cart-dropdown_empty-msg'>
+                        No items in cart
+                    </div>
+                )}
+            </div>
         </div>
     )
 }
 
-const mapStateToProps = state => ({
-    cartItems: selectCartItems(state)
+const mapStateToProps = (state) => ({
+    cartItems: selectCartItems(state),
 })
 
 export default connect(mapStateToProps)(CartDropdown)

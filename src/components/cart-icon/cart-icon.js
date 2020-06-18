@@ -7,11 +7,10 @@ import './cart-icon.scss'
 import {BsBag } from 'react-icons/bs'
 import { IconContext } from 'react-icons/lib'
 import { toggleCart } from '../../redux/actions/actions'
-import { useDispatch, connect } from 'react-redux'
+import { connect } from 'react-redux'
 import { selectCartItemsCount } from '../../redux/selectors/cart.selectors'
 
-function CartIcon( { itemCount }) {
-    const dispatch = useDispatch()
+function CartIcon( { itemCount, dispatch }) {
     return (
         <IconContext.Provider value={{ className: 'nav-icons_provider' }}>
         <div className="cart-icon" onClick = { () => dispatch(toggleCart()) }>

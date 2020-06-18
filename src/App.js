@@ -7,10 +7,10 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Shop from './pages/shop-page/shop'
 import SignInRegisterPage from './pages/sign-in-register/sign-in-register'
 import { setUser } from './redux/actions/actions'
-import { useDispatch, connect } from 'react-redux'
+import {connect } from 'react-redux'
+import CheckoutPage from './pages/checkout-page/checkout-page';
 
-function App({ currentUser }) {
-    const dispatch = useDispatch()
+function App({dispatch, currentUser }) {
     let user = null
     useEffect(() => {
         // check session storage for auth token
@@ -29,8 +29,9 @@ function App({ currentUser }) {
             <Header />
             <Switch>
                 <Route exact path='/' component={HomePage} />
-                <Route path='/hats' component={HatsPage} />
+                <Route exact path='/hats' component={HatsPage} />
                 <Route path='/shop' component={Shop} />
+                <Route exact path='/checkout' component={CheckoutPage}/>
                 <Route
                     exact
                     path='/signin'
@@ -55,4 +56,4 @@ function App({ currentUser }) {
 const mapStateToProps = ({ user }) => ({
     currentUser: user.currentUser,
 })
-export default connect(mapStateToProps, null)(App)
+export default connect(mapStateToProps)(App)
