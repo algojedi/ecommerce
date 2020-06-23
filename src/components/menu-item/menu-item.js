@@ -4,10 +4,6 @@ import { Link, withRouter } from 'react-router-dom'
 import './menu-item.scss'
 
 const MenuItem = ({ match, linkUrl, title, imageUrl, size }) => {
-    console.log('linkUrl from menu item: ', linkUrl)
-    console.log('... and the linkUrl: ' +`${linkUrl}` )
-
-
     return (
         <div className={`${size} menu-item`}>
             <Link to={`${match.url}${linkUrl}`}>

@@ -7,6 +7,7 @@ export const TOGGLE_CART = 'TOGGLE_CART'
 export const ADD_ITEM = 'ADD_ITEM'
 export const REMOVE_ITEM = 'REMOVE_ITEM'
 export const CLEAR_ITEM_FROM_CART = 'CLEAR_ITEM_FROM_CART'
+export const UPDATE_COLLECTIONS = 'UPDATE_COLLECTIONS' 
 
 /*
  * action creators
@@ -34,3 +35,8 @@ export const clearItemFromCart = (item) => ({
     type: CLEAR_ITEM_FROM_CART,
     payload: item,
 })
+
+// collection actions -----------------
+export const updateCollections = (collections) => {
+  return { type: UPDATE_COLLECTIONS, payload: collections }
+}
