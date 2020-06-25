@@ -1,8 +1,5 @@
 import React from 'react'
-// import { ReactComponent as ShoppingCart } from '../../assets/cart.svg'
 import './cart-icon.scss'
-
-// <ShoppingCart className="cart-icon_cart" />
 
 import {BsBag } from 'react-icons/bs'
 import { IconContext } from 'react-icons/lib'

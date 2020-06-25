@@ -9,13 +9,15 @@ import { toggleCart } from '../../redux/actions/actions'
 
 function CartDropdown({ dispatch, cartItems }) {
     const history = useHistory()
+    console.log('the cart items prop coming to cart dropdown')
+    console.log(cartItems)
     return (
         <div className='cart-dropdown'>
             <div className='cart-dropdown_items'>
                 {cartItems.length ? (
                     <div>
                         {cartItems.map((cartItem) => (
-                            <CartItem key={cartItem.id} item={cartItem} />
+                            <CartItem key={cartItem._id} item={cartItem} />
                         ))}
                         <div className='cart-dropdown_btn' onClick={() => {
                             dispatch(toggleCart())

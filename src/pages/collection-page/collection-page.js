@@ -5,7 +5,7 @@ import { selectCollection } from '../../redux/selectors/shop.selectors'
 import CollectionItem from '../../components/collection-item/collection-item'
 
 const CollectionPage = ({ collection }) => {
-    console.log(collection)
+    // console.log(collection)
     if (!collection) {
         return <h1>Loading</h1>
     }
@@ -15,7 +15,7 @@ const CollectionPage = ({ collection }) => {
             <h2 className='title'>{title}</h2>
             <div className='items'>
                 {items.map((item) => (
-                    <CollectionItem key={item.id} item={item} />
+                    <CollectionItem key={item._id} item={item} />
                 ))}
             </div>
         </div>
