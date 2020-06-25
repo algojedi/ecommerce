@@ -1,12 +1,23 @@
-// import SHOP_DATA from './shop-data';
-import { UPDATE_COLLECTIONS } from '../../actions/actions';
+import {
+    UPDATE_COLLECTIONS,
+    UPDATE_COLLECTIONS_FAIL,
+    UPDATE_COLLECTIONS_SUCCESS,
+} from '../../actions/actions'
 
-const INITIAL_STATE = { collections : null }
+const INITIAL_STATE = {
+    collections: null,
+    isLoading: false,
+    errorMsg: undefined,
+}
 
 const shopReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case UPDATE_COLLECTIONS:
-            return { collections: action.payload }
+            return { ...state, isLoading: true }
+        case UPDATE_COLLECTIONS_FAIL:
+            return { ...state, isLoading: false, errorMsg: action.payload }
+        case UPDATE_COLLECTIONS_SUCCESS:
+            return { ...state, isLoading: false, collections: action.payload }
         default:
             return state
     }
