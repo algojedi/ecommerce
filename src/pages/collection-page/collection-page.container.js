@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
@@ -8,7 +6,7 @@ import collectionPage from './collection-page';
 import WithSpinner from '../../components/with-spinner/with-spinner';
 
 const mapStateToProps = createStructuredSelector({
-//   isLoading: selectIsCollectionFetching
+  isLoading: selectIsCollectionFetching // needed by WithSpinner
 });
 
 const CollectionPageContainer = compose(
