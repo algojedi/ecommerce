@@ -12,10 +12,17 @@
   z-index: 5;
 
   &_items {
-    height: 240px;
+    // height: 240px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+
+    &_nonempty {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
   }
   &_empty-msg {
     font-size: 1.4rem;
@@ -24,7 +31,7 @@
     padding: 1rem;
   }
 
-  &_button {
+  &_btn {
     margin-top: auto;
   }
 }

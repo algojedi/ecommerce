@@ -18,8 +18,8 @@ const Nav = ({ dispatch, currentUser, hidden }) => {
     return (
         <IconContext.Provider value={{ className: 'nav-icons-provider' }}>
             <div className='navbar'>
-                <MdDehaze className='navbar_burger' />
-                <h1 className='navbar_title'>The Clothing Store</h1>
+                <MdDehaze className='navbar_burger' title="demo only" />
+                <h1 className='navbar_title' onClick={() => { history.push('/')}}>The Clothing Store</h1>
                 <div className='navbar_searchfield'>
                     <SearchField />
                 </div>

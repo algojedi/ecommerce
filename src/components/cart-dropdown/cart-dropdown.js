@@ -15,7 +15,7 @@ function CartDropdown({ dispatch, cartItems }) {
         <div className='cart-dropdown'>
             <div className='cart-dropdown_items'>
                 {cartItems.length ? (
-                    <div>
+                    <div className='cart-dropdown_items_nonempty'>
                         {cartItems.map((cartItem) => (
                             <CartItem key={cartItem._id} item={cartItem} />
                         ))}

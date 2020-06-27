@@ -6,6 +6,7 @@ import Directory from '../../components/directory/directory'
 function HomePage() {
     return (
         <main className='homepage'>
+            <Directory />
             <section className='homepage_banner'>
                 <img
                     className='homepage_banner_photo'
@@ -22,7 +23,6 @@ function HomePage() {
                     <button className='homepage_banner_msg_btn'>DETAILS</button>
                 </div>
             </section>
-            <Directory />
         </main>
     )
 }
