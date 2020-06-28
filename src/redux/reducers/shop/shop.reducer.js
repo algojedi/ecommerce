@@ -17,7 +17,7 @@ const shopReducer = (state = INITIAL_STATE, action) => {
         case UPDATE_COLLECTIONS_FAIL:
             return { ...state, isLoading: false, errorMsg: action.payload }
         case UPDATE_COLLECTIONS_SUCCESS:
-            return { ...state, isLoading: false, collections: action.payload }
+            return { ...state, errorMsg: undefined, isLoading: false, collections: action.payload }
         default:
             return state
     }

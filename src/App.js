@@ -6,20 +6,20 @@ import Footer from './components/footer/footer'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Shop from './pages/shop-page/shop'
 import SignInRegisterPage from './pages/sign-in-register/sign-in-register'
-import { setUser, asyncTokenSignIn } from './redux/actions/actions'
+// import { setUser, asyncTokenSignIn } from './redux/actions/actions'
 import {connect } from 'react-redux'
 import CheckoutPage from './pages/checkout-page/checkout-page';
 import Copyright from './components/copyright/copyright';
 
 function App({dispatch, currentUser }) {
-    let user = null
-    useEffect(() => {
-        const token = sessionStorage.getItem('token');
-        if (!token) {
-            console.log('no token in session storage')
-            return;
-        }
-        dispatch(asyncTokenSignIn())
+    // let user = null
+    // useEffect(() => {
+        // const token = sessionStorage.getItem('token');
+        // if (!token) {
+        //     console.log('no token in session storage')
+        //     return;
+        // }
+        // dispatch(asyncTokenSignIn())
 
         // setTimeout(() => {
         //     user = 'John Lennon'
@@ -27,7 +27,7 @@ function App({dispatch, currentUser }) {
         //     dispatch(setUser({ user, id }))
         //     console.log('settimout after setting current user')
         // }, 200)
-    }, [dispatch])
+    // }, [dispatch])
     return (
         <React.Fragment>
             <Header />

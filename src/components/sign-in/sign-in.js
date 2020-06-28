@@ -4,13 +4,16 @@ import FormInput from '../form-input/form-input'
 import CustomButton from '../custom-btn/custom-btn'
 import { useForm } from 'react-hook-form'
 import './sign-in.scss'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { asyncSignIn } from '../../redux/actions/actions'
 
 const SignIn = () => {
     
 
     const dispatch = useDispatch()
     const {register, handleSubmit, errors} = useForm();
+    const { errorMsg } = useSelector(state => state.user)
+
     // const [ email, setEmail ] = useState('')
     // const [ password, setPassword ] = useState('')
         
@@ -18,8 +21,8 @@ const SignIn = () => {
 
     const onSubmit = data => {
         //preventDefault()
-        console.log('the data is', data) // data.email and data.password
-        dispatch(async)
+        // console.log('the data is', data) // data.email and data.password
+        dispatch(asyncSignIn(data))
        
     }
 
@@ -50,6 +53,9 @@ const SignIn = () => {
                         <CustomButton type='submit'> Sign in </CustomButton>
                     </div>
                 </form>
+                <div className="err-msg">
+                    { errorMsg ? errorMsg : null}
+                </div>
             </div>
         )
 }

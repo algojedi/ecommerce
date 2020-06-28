@@ -5,13 +5,15 @@ import FormInput from '../form-input/form-input'
 import CustomButton from '../custom-btn/custom-btn'
 import { useForm } from 'react-hook-form'
 import './register.scss'
+import { asyncRegister } from '../../redux/actions/actions'
 
 const Register = () => {
     const {register, handleSubmit, errors} = useForm();
 
     const onSubmit = data => {
         //preventDefault()
-        console.log('the data is', data)
+        // console.log('the data is', data)
+        asyncRegister(data)
     }
 
         return (

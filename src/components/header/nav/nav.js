@@ -5,14 +5,14 @@ import { IconContext } from 'react-icons'
 import SearchField from '../searchfield/searchfield'
 import { Link, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { setUser } from '../../../redux/actions/actions'
+import { setUser, signOut } from '../../../redux/actions/actions'
 import CartIcon from '../../cart-icon/cart-icon'
 import CartDropdown from '../../cart-dropdown/cart-dropdown'
 
 const Nav = ({ dispatch, currentUser, hidden }) => {
     const history = useHistory()
     const handleSignOut = () => {
-        dispatch(setUser(null))
+        dispatch(signOut())
         history.push('/')
     }
     return (
