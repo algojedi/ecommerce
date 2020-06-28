@@ -4,12 +4,12 @@ import FormInput from '../form-input/form-input'
 import CustomButton from '../custom-btn/custom-btn'
 import { useForm } from 'react-hook-form'
 import './sign-in.scss'
-// import useAsync from '../../hooks/use-async';
+import { useDispatch } from 'react-redux'
 
 const SignIn = () => {
     
 
-
+    const dispatch = useDispatch()
     const {register, handleSubmit, errors} = useForm();
     // const [ email, setEmail ] = useState('')
     // const [ password, setPassword ] = useState('')
@@ -19,6 +19,7 @@ const SignIn = () => {
     const onSubmit = data => {
         //preventDefault()
         console.log('the data is', data) // data.email and data.password
+        dispatch(async)
        
     }
 
@@ -36,7 +37,7 @@ const SignIn = () => {
                         required
                     />
                     <FormInput
-                    reference={register({ required: "Password must be at least 8 characters", minLength: 8 })}
+                    reference={register({ required: "Password must be at least 4 characters", minLength: 4 })}
                         name='password'
                         type='password'
                         // value={password}
@@ -44,8 +45,10 @@ const SignIn = () => {
                         label='password'
                         required
                     />
-                    {errors.password && errors.password.type === 'minLength' && <p>this is req'd</p>}
-                    <CustomButton type='submit'> Sign in </CustomButton>
+                    {errors.password && errors.password.type === 'minLength' && <p className='err-msg'>Invalid password</p>}
+                    <div className="form-btn-container">
+                        <CustomButton type='submit'> Sign in </CustomButton>
+                    </div>
                 </form>
             </div>
         )

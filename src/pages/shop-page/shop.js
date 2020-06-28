@@ -17,11 +17,6 @@ const ShopPage = ({ match }) => {
 
     return (
         <div className='shop-page'>
-            {/**   <Route exact path={`${match.path}`} render={(props) => <SpinnedCollectionsOverview isLoading={isLoading} {...props}/>} />
-            <Route
-                path={`${match.path}/:collectionId`}
-                render={(props) => <SpinnedCollectionPage isLoading={isLoading} {...props}/>} />
-*/}
             <Route
                 exact path={`${match.path}`}
                 component={CollectionsOverviewContainer}

@@ -14,10 +14,8 @@ const Register = () => {
         console.log('the data is', data)
     }
 
-  
-
         return (
-            <div className='sign-in'>
+            <div className='register'>
                 <h1>Create New Account</h1>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -40,13 +38,13 @@ const Register = () => {
                         required
                     />
                     <FormInput
-                    reference={register({ required: "Password must be at least 8 characters", minLength: 8 })}
+                    reference={register({ required: "Password must be at least 4 characters", minLength: 4 })}
                         name='password'
                         type='password'
                         label='password'
                         required
                     />
-                    {errors.password && errors.password.type === 'minLength' && <p>this is req'd</p>}
+                    {errors.password && errors.password.type === 'minLength' && <p className="err-msg">Password must be at least 4 characters</p>}
                     <CustomButton type='submit' inverse="true" >Register</CustomButton>
                 </form>
             </div>

@@ -14,6 +14,9 @@ export const CLEAR_ITEM_FROM_CART = 'CLEAR_ITEM_FROM_CART'
 export const UPDATE_COLLECTIONS = 'UPDATE_COLLECTIONS'
 export const UPDATE_COLLECTIONS_SUCCESS = 'UPDATE_COLLECTIONS_SUCCESS'
 export const UPDATE_COLLECTIONS_FAIL = 'UPDATE_COLLECTIONS_FAIL'
+export const TOKEN_SIGNIN = 'TOKEN_SIGNIN'
+export const TOKEN_SIGNIN_SUCCESS = 'TOKEN_SIGNIN_SUCCESS'
+export const TOKEN_SIGNIN_FAIL = 'TOKEN_SIGNIN_FAIL'
 
 /*
  * action creators
@@ -42,6 +45,26 @@ export const clearItemFromCart = (item) => ({
     type: CLEAR_ITEM_FROM_CART,
     payload: item,
 })
+
+// sign in actions -------------------
+export const tokenSignIn = () => {
+    return { type: TOKEN_SIGNIN }
+}
+export const tokenSignInSuccess = (user) => {
+    return { type: TOKEN_SIGNIN_SUCCESS, payload: user }
+}
+export const tokenSignInFail = (err) => {
+    return { type: TOKEN_SIGNIN_FAIL, payload: err }
+}
+export const asyncTokenSignIn = () => {
+    return dispatch => {
+        dispatch(tokenSignIn())
+        fetch(api + 'login')
+        .then(results => results.json())
+        .then(user => dispatch(tokenSignInSuccess(user)))
+        .catch(err => dispatch(tokenSignInFail(err)))
+    }
+}
 
 // collection actions -----------------
 export const fetchCollections = () => {

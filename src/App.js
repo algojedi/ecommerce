@@ -6,24 +6,28 @@ import Footer from './components/footer/footer'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Shop from './pages/shop-page/shop'
 import SignInRegisterPage from './pages/sign-in-register/sign-in-register'
-import { setUser } from './redux/actions/actions'
+import { setUser, asyncTokenSignIn } from './redux/actions/actions'
 import {connect } from 'react-redux'
 import CheckoutPage from './pages/checkout-page/checkout-page';
+import Copyright from './components/copyright/copyright';
 
 function App({dispatch, currentUser }) {
     let user = null
     useEffect(() => {
-        // check session storage for auth token
-        // const token = sessionStorage.getItem('token');
-        // if (!token) return;
-        console.log('useeffect before timout')
-        setTimeout(() => {
-            user = 'John Lennon'
-            const id = 1234
-            dispatch(setUser({ user, id }))
-            console.log('settimout after setting current user')
-        }, 200)
-    }, [])
+        const token = sessionStorage.getItem('token');
+        if (!token) {
+            console.log('no token in session storage')
+            return;
+        }
+        dispatch(asyncTokenSignIn())
+
+        // setTimeout(() => {
+        //     user = 'John Lennon'
+        //     const id = 1234
+        //     dispatch(setUser({ user, id }))
+        //     console.log('settimout after setting current user')
+        // }, 200)
+    }, [dispatch])
     return (
         <React.Fragment>
             <Header />
@@ -45,6 +49,7 @@ function App({dispatch, currentUser }) {
                 />
             </Switch>
             <Footer />
+            <Copyright/>
         </React.Fragment>
     )
 }

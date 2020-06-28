@@ -1,8 +1,14 @@
 .sign-in {
-  flex-basis: 30vw;
   margin-top: 3rem;
   text-align: center;
-  min-width: 400px;
   display: flex;
   flex-direction: column;
+  flex: .75 0 300px;
+
+}
+
+.form-btn-container {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
 }
