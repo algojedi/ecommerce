@@ -48,8 +48,8 @@ const Nav = ({ dispatch, currentUser, hidden }) => {
 hidden ? null : <CartDropdown />
             }
             <ul className='navbar_links'>
-                <Link to='/mens' className='navbar_links_link'>MEN</Link>
-                <Link to='/women' className='navbar_links_link'>WOMEN</Link>
+                <Link to='/shop/mens' className='navbar_links_link'>MENS</Link>
+                <Link to='/shop/womens' className='navbar_links_link'>WOMENS</Link>
                 <Link to='/shop' className='navbar_links_link'>SHOP</Link>
             </ul>
         </IconContext.Provider>

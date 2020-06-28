@@ -9,7 +9,7 @@ function SearchField() {
             value={{ className: 'search-field_icons-provider' }}
         >
             <div className='search-field'>
-                <FaSearch className='search-field_icon' size='14px' />
+                <FaSearch className='search-field_icon' size='14px' onClick={() => {alert('demo only')}} />
                 <input
                     type='text'
                     placeholder='Search'
