@@ -14,26 +14,17 @@ export const CLEAR_ITEM_FROM_CART = 'CLEAR_ITEM_FROM_CART'
 export const UPDATE_COLLECTIONS = 'UPDATE_COLLECTIONS'
 export const UPDATE_COLLECTIONS_SUCCESS = 'UPDATE_COLLECTIONS_SUCCESS'
 export const UPDATE_COLLECTIONS_FAIL = 'UPDATE_COLLECTIONS_FAIL'
-// export const TOKEN_SIGNIN = 'TOKEN_SIGNIN'
-// export const TOKEN_SIGNIN_SUCCESS = 'TOKEN_SIGNIN_SUCCESS'
-// export const TOKEN_SIGNIN_FAIL = 'TOKEN_SIGNIN_FAIL'
 export const SIGNIN = 'SIGNIN'
 export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS'
 export const SIGNIN_FAIL = 'SIGNIN_FAIL'
-
-export const REGISTER = 'SIGNIN'
-export const REGISTER_SUCCESS = 'SIGNIN_SUCCESS'
-export const REGISTER_FAIL = 'SIGNIN_FAIL'
+export const REGISTER = 'REGISTER'
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
+export const REGISTER_FAIL = 'REGISTER_FAIL'
 export const SIGNOUT = 'SIGNOUT'
 
 /*
  * action creators
  */
-
-// user actions -----------------
-// export const setUser = (user) => {
-//     return { type: SET_CURRENT_USER, payload: user }
-// }
 
 // cart actions -----------------
 export const toggleCart = () => {
@@ -49,51 +40,14 @@ export const removeItem = (item) => ({
     payload: item,
 })
 
+// an action to remove item checkout page
 export const clearItemFromCart = (item) => ({
     type: CLEAR_ITEM_FROM_CART,
     payload: item,
 })
 
-// sign in actions -------------------
-// export const tokenSignIn = () => {
-//     return { type: TOKEN_SIGNIN }
-// }
-// export const tokenSignInSuccess = (user) => {
-//     return { type: TOKEN_SIGNIN_SUCCESS, payload: user }
-// }
-// export const tokenSignInFail = (err) => {
-//     return { type: TOKEN_SIGNIN_FAIL, payload: err }
-// }
-// export const asyncTokenSignIn = () => {
-//     return async (dispatch) => {
-//         dispatch(tokenSignIn())
-//         const token = window.sessionStorage.getItem('token')
-//         if (!token) return dispatch(tokenSignInFail())
-        
-//         try {
-//             const response = await fetch(api + 'login', {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                     "Authorization": token
-//                 },
-//             })
-//             if (!response.ok) {
-//                 const errMsg = await response.text()
-//                 throw new Error(errMsg)
-//             }
-//             const user = await response.json()
-//             // console.log('sending to redux sccuess')
-//             // console.log(user)
-//             dispatch(signInSuccess(user))
-//         } catch (err) {
-//             dispatch(signInFail(err.message))
-//         }
-//     }
-// }
-
 export const signOut = () => {
-    return  { type: SIGNOUT }
+    return { type: SIGNOUT }
 }
 
 export const signIn = () => {
@@ -122,8 +76,6 @@ export const asyncSignIn = (creds) => {
                 throw new Error(errMsg)
             }
             const user = await response.json()
-            // console.log('sending to redux sccuess')
-            // console.log(user)
             dispatch(signInSuccess(user))
         } catch (err) {
             dispatch(signInFail(err.message))
@@ -143,7 +95,6 @@ export const registerFail = (err) => {
 export const asyncRegister = (creds) => {
     return async (dispatch) => {
         dispatch(register())
-
         try {
             const response = await fetch(api + 'register', {
                 method: 'POST',
@@ -159,11 +110,14 @@ export const asyncRegister = (creds) => {
             const user = await response.json()
             dispatch(registerSuccess(user))
         } catch (err) {
-            dispatch(registerFail(err.message))
+            let errorMessage = err.message
+            if (errorMessage.charAt(0) === '"') {
+                errorMessage = err.message.split('"').join('')
+            }
+            dispatch(registerFail(errorMessage))
         }
     }
 }
-
 
 // collection actions -----------------
 export const fetchCollections = () => {
@@ -189,9 +143,6 @@ export const asyncFetchCollections = () => {
             .then((collection) => {
                 const convertedCollection = collectionMapping(collection)
                 dispatch(fetchCollectionsSuccess(convertedCollection))
-
-                // console.log(convertedCollection)
-                // dispatch(updateCollections(convertedCollection))
             })
             .catch((err) => {
                 console.log(err.message)

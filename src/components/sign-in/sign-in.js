@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import FormInput from '../form-input/form-input'
 import CustomButton from '../custom-btn/custom-btn'
@@ -13,7 +13,6 @@ const SignIn = () => {
     const dispatch = useDispatch()
     const {register, handleSubmit, errors} = useForm();
     const { errorMsg } = useSelector(state => state.user)
-
     // const [ email, setEmail ] = useState('')
     // const [ password, setPassword ] = useState('')
         
@@ -23,7 +22,6 @@ const SignIn = () => {
         //preventDefault()
         // console.log('the data is', data) // data.email and data.password
         dispatch(asyncSignIn(data))
-       
     }
 
         return (

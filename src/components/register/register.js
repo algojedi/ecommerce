@@ -6,14 +6,17 @@ import CustomButton from '../custom-btn/custom-btn'
 import { useForm } from 'react-hook-form'
 import './register.scss'
 import { asyncRegister } from '../../redux/actions/actions'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Register = () => {
     const {register, handleSubmit, errors} = useForm();
+    const { registerErrorMsg } = useSelector(state => state.user)
+    const dispatch = useDispatch()
 
     const onSubmit = data => {
-        //preventDefault()
-        // console.log('the data is', data)
-        asyncRegister(data)
+        const {email, password, fname, lname} = data
+        const name = `${fname} ${lname}`
+        dispatch(asyncRegister({ email, password, name }))
     }
 
         return (
@@ -49,6 +52,9 @@ const Register = () => {
                     {errors.password && errors.password.type === 'minLength' && <p className="err-msg">Password must be at least 4 characters</p>}
                     <CustomButton type='submit' inverse="true" >Register</CustomButton>
                 </form>
+                <div className="err-msg">
+                    { registerErrorMsg ? registerErrorMsg : null}
+                </div>
             </div>
         )
 }

@@ -26,7 +26,6 @@ $burger-appears: 1000px;
         color: var(--color-text-onwhite);
 
         & > * {
-
             padding: 2rem;
             @media screen and (max-width: $small-dev-width) {
                 padding: 1rem;
@@ -70,16 +69,11 @@ $burger-appears: 1000px;
             display: none;
         }
     }
-    @media screen and (max-width: $small-dev-width) {
-        padding: 1rem;
-    }
 }
 
 .nav-icons-provider {
     font-size: 3rem;
-    // @media screen and (max-width: var(--small-dev-width)) {
     @media screen and (max-width: $small-dev-width) {
-        // @media screen and (max-width: 500px) {
         font-size: 2rem;
     }
 

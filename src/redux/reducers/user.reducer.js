@@ -1,5 +1,4 @@
 import {
-    SET_CURRENT_USER,
     SIGNIN,
     SIGNIN_SUCCESS,
     SIGNIN_FAIL,
@@ -9,7 +8,12 @@ import {
     SIGNOUT,
 } from '../actions/actions'
 
-const INITIAL_STATE = { currentUser: null, isLoading: false, errorMsg: '' }
+const INITIAL_STATE = {
+    currentUser: null,
+    isLoading: false,
+    errorMsg: '',
+    registerErrorMsg: '',
+}
 
 const userReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
@@ -17,7 +21,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return INITIAL_STATE
 
         case SIGNIN:
-            return { ...state, isLoading: true, errorMsg: '' }
+            return {
+                ...state,
+                isLoading: true,
+                errorMsg: '',
+                registerErrorMsg: '',
+            }
 
         case SIGNIN_SUCCESS:
             return {
@@ -25,6 +34,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 isLoading: false,
                 currentUser: action.payload,
                 errorMsg: '',
+                registerErrorMsg: '',
             }
 
         case SIGNIN_FAIL:
@@ -36,7 +46,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
             }
 
         case REGISTER:
-            return { ...state, isLoading: true, errorMsg: '' }
+            return {
+                ...state,
+                isLoading: true,
+                errorMsg: '',
+                registerErrorMsg: '',
+            }
 
         case REGISTER_SUCCESS:
             return {
@@ -44,6 +59,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 isLoading: false,
                 currentUser: action.payload,
                 errorMsg: '',
+                registerErrorMsg: '',
             }
 
         case REGISTER_FAIL:
@@ -51,17 +67,9 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 currentUser: null,
                 isLoading: false,
-                errorMsg: action.payload,
+                errorMsg: '',
+                registerErrorMsg: action.payload,
             }
-
-        // case TOKEN_SIGNIN:
-        //     return { ...state, isLoading: true }
-
-        // case TOKEN_SIGNIN_SUCCESS:
-        //     return { ...state, isLoading: false, currentUser: action.payload }
-
-        // case TOKEN_SIGNIN_FAIL:
-        //     return { ...state, isLoading: false }
 
         default:
             return state
