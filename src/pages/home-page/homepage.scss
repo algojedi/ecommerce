@@ -1,18 +1,16 @@
-$grid-2-1-bp: 770px;
+$grid-2-1-bp: 770px; // breakpoint for switching 2 col layout to 1
 
 .homepage {
     padding: 0 var(--page-x-padding);
     & > section {
         margin: var(--section-y-margin) 0;
     }
-    & > * {
-    }
+
     &_banner {
         display: grid;
         grid-template-columns: 2fr 1fr;
         @media screen and (max-width: $grid-2-1-bp) {
             grid-template-columns: 1fr;
-            //justify-content: center;
         }
         &_photo {
             max-width: 100%;
@@ -40,6 +38,7 @@ $grid-2-1-bp: 770px;
                 text-decoration: underline;
                 padding: 1rem;
                 transition: all 0.25s ease;
+                cursor: pointer;
                 &:hover {
                     background: var(--color-primary--light);
                     color: white;

@@ -1,16 +1,14 @@
 import './shop.scss'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { asyncFetchCollections } from '../../redux/actions/actions'
 import CollectionsOverviewContainer from '../../components/collections-overview/collections-overview.container'
 import CollectionPageContainer from '../collection-page/collection-page.container'
 
 const ShopPage = ({ match }) => {
-    // const { isLoading } = useSelector((state) => state.shop)
     const dispatch = useDispatch()
-    // const [loading, setLoading] = useState(false)
     useEffect(() => {
         dispatch(asyncFetchCollections())
     }, [dispatch])

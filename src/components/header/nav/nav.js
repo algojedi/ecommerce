@@ -8,17 +8,38 @@ import { connect } from 'react-redux'
 import { signOut } from '../../../redux/actions/actions'
 import CartIcon from '../../cart-icon/cart-icon'
 import CartDropdown from '../../cart-dropdown/cart-dropdown'
+import Modal from '../../modal/modal'
+import CustomButton from '../../custom-btn/custom-btn';
 
 const Nav = ({ dispatch, currentUser, hidden }) => {
     const history = useHistory()
+
+    const modalRef = React.useRef()
+
+    const openModal = () => {
+        modalRef.current.openModal()
+    }
+
     const handleSignOut = () => {
         dispatch(signOut())
         history.push('/')
     }
+
     return (
         <IconContext.Provider value={{ className: 'nav-icons-provider' }}>
             <div className='navbar'>
-                <MdDehaze className='navbar_burger' title='demo only' />
+                <MdDehaze
+                    className='navbar_burger'
+                    onClick={openModal}
+                    title='demo only'
+                />
+                <Modal ref={modalRef}>
+                    <h1>Demo Only</h1>
+                    <CustomButton onClick={() => modalRef.current.close()}>
+                        Close Modal
+                    </CustomButton>
+                </Modal>
+
                 <h1
                     className='navbar_title'
                     onClick={() => {

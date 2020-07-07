@@ -13,7 +13,6 @@ function Ticker() {
         'Free In-store Pickup',
     ]
     const handleClick = (side) => {
-        console.log('side from handle click', side)
         setArrowClicked(true)
         switch (side) {
             case 'left':
@@ -33,25 +32,22 @@ function Ticker() {
                 break
         }
     }
-    // useEffect(() => {
-    //     console.log('use effect running with index', tickerIndex)
-    //     if (arrowClicked) {
-    //         setTickerDisplay(notices[tickerIndex])
-    //         setTickerIndex(
-    //             tickerIndex === notices.length - 1 ? 0 : tickerIndex + 1
-    //         )
-    //         setArrowClicked(false)
-    //         return
-    //     }
-    //     setTimeout(() => {
-    //         setTickerDisplay(notices[tickerIndex])
-    //         setTickerIndex(
-    //             tickerIndex === notices.length - 1 ? 0 : tickerIndex + 1
-    //         )
-    //         console.log('This will run every second!')
-    //         console.log(tickerDisplay)
-    //     }, 6000)
-    // }, [tickerIndex, notices, tickerDisplay, arrowClicked])
+    useEffect(() => {
+        if (arrowClicked) {
+            setTickerDisplay(notices[tickerIndex])
+            setTickerIndex(
+                tickerIndex === notices.length - 1 ? 0 : tickerIndex + 1
+            )
+            setArrowClicked(false)
+            return
+        }
+        setTimeout(() => {
+            setTickerDisplay(notices[tickerIndex])
+            setTickerIndex(
+                tickerIndex === notices.length - 1 ? 0 : tickerIndex + 1
+            )
+        }, 6000)
+    }, [tickerIndex, notices, tickerDisplay, arrowClicked])
 
     return (
         <IconContext.Provider value={{ className: 'ticker-icons-provider' }}>
