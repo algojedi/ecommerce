@@ -11,14 +11,7 @@ import CheckoutPage from './pages/checkout-page/checkout-page';
 import Copyright from './components/copyright/copyright';
 
 function App({ currentUser }) {
-    // useEffect(() => {
-        // const token = sessionStorage.getItem('token');
-        // if (!token) {
-        //     return;
-        // }
-        // dispatch(asyncTokenSignIn())
-
-    // }, [dispatch])
+    
     return (
         <React.Fragment>
             <Header />
